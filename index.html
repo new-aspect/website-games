@@ -19,8 +19,8 @@
                         <span x-text="cell"></span>
                     </div>
                 </template>
-
             </div>
+            <button @click="resetGame()" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded">重新开始</button>
         </div>
     </div>
 </body>
@@ -52,6 +52,11 @@
                     const [a,b,c] = combination;
                     return this.board[a] && this.board[a]===this.board[b] && this.board[a]===this.board[c];
                 });
+            },
+            resetGame(){
+                this.board = Array(9).fill(null), // 重置棋盘
+                this.currentPlayer = 'X'; // 将玩家重置为X
+                winner = null; // 清楚胜利者
             }
         }
     }
